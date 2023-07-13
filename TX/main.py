@@ -61,7 +61,8 @@ while True:
         if sentence:
             
             #print('WGS84 Coordinate:Latitude(%c),Longitude(%c) %.9f,%.9f'%(parser.latitude[1],parser.longitude[1],parser.latitude[0],parser.longitude[0]))
-            data = f'{parser.latitude[1]}    {parser.longitude[1]}   {parser.latitude[0]}   {parser.longitude[0]}     {parser.altitude}'
+            data = f'{(parser.latitude[1])},{(parser.longitude[1])},{(parser.latitude[0])},{(parser.longitude[0])},{(parser.altitude)},{(parser.hdop)},{(parser.satellites_in_use)}'
+
             print(data)
 
             #gnss_l76b.wgs84_to_bd09(parser.longitude[0],parser.latitude[0])
@@ -82,7 +83,7 @@ while True:
             print('Height Above Geoid:', parser.geoid_height)
             print('Horizontal Dilution of Precision:', parser.hdop)
             print('Satellites in Use by Receiver:', parser.satellites_in_use)
-            time.sleep(4)          
+            time.sleep(2)
 
             data_to_send = data.encode('ascii')
             sx.send(data_to_send)
